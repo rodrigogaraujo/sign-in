@@ -1,6 +1,6 @@
 import React from "react";
 
-import TopBar from "./internals/TopBar";
+import TopBar from "../../components/site/TopBar";
 
 import { Header } from "./styles";
 

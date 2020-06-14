@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
 import { Container } from "./styles";
-import logo from "../../../../../../assets/logog3.png";
+import logo from "../../../../../assets/logog3.png";
 import Content from "../../../Content";
 
 const TopBar = () => {
