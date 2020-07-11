@@ -19,6 +19,7 @@ import logo from "../../../assets/logo.png";
 const SideBar = () => {
     const location = useLocation();
     const pageActive = location.pathname.replace("/", "");
+    console.log(pageActive);
     return (
         <Container>
             <img src={logo} alt="G3 Infotech" />
@@ -43,28 +44,43 @@ const SideBar = () => {
                 <FiUserPlus />
                 <span>Novo</span>
             </Link>
-            <Link to="/customer/list">
+            <Link
+                to="/customer/list"
+                className={pageActive === "customer/list" ? "active" : ""}
+            >
                 <FiUsers />
                 <span>Listar</span>
             </Link>
             <span>Ordem de serviço</span>
-            <Link to="/customer/list">
+            <Link to="/os" className={pageActive === "os" ? "active" : ""}>
                 <FiEdit />
                 <span>Novo</span>
             </Link>
-            <Link to="/customer/list">
+            <Link
+                to="/os/list"
+                className={pageActive === "os/list" ? "active" : ""}
+            >
                 <FiEdit3 />
                 <span>Abertas</span>
             </Link>
-            <Link to="/customer/list">
+            <Link
+                to="/os/list-all"
+                className={pageActive === "os/list-all" ? "active" : ""}
+            >
                 <FiList /> <span>Listar todas</span>
             </Link>
             <span>Produtos</span>
-            <Link to="/customer/list">
+            <Link
+                to="/product"
+                className={pageActive === "product" ? "active" : ""}
+            >
                 <FiShoppingCart />
                 <span>Novo</span>
             </Link>
-            <Link to="/customer/list">
+            <Link
+                to="/product/list"
+                className={pageActive === "product/list" ? "active" : ""}
+            >
                 <FiShoppingBag />
                 <span>Listar todos</span>
             </Link>

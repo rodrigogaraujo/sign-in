@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     color: var(--dark);
     position: relative;
+    width: 100%;
     input {
         border: none;
         outline: none;
