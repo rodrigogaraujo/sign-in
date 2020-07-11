@@ -19,7 +19,6 @@ import logo from "../../../assets/logo.png";
 const SideBar = () => {
     const location = useLocation();
     const pageActive = location.pathname.replace("/", "");
-    console.log(pageActive);
     return (
         <Container>
             <img src={logo} alt="G3 Infotech" />

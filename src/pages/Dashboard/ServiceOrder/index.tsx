@@ -6,7 +6,7 @@ import { Container, Content } from "./styles";
 import { Formik, Form } from "formik";
 import Select from "react-select";
 
-const Customer = () => {
+const ServiceOrder = () => {
     const options = [
         { value: "1", label: "Rodrigo Gomes Araújo" },
         { value: "2", label: "G3 Infotech" },
@@ -102,4 +102,4 @@ const Customer = () => {
     );
 };
 
-export default Customer;
+export default ServiceOrder;

@@ -5,6 +5,7 @@ import SideBar from "../../../../../components/dashboard/SideBar";
 import MaterialTable, { MTableToolbar } from "material-table";
 import { FiEdit } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 
 import icons from "../../../../../utils/icons";
 
@@ -49,14 +50,17 @@ const localization = {
 };
 
 const List: React.FC = () => {
+    const history = useHistory();
     const mock = [
         {
+            id: 1,
             name: "Rodrigo Gomes Araújo",
             status: "Aberta",
             address: "Av Maria Concebida Costa, 29",
             priority: "Alta",
         },
         {
+            id: 2,
             name: "G3 Infotech",
             status: "Aberta",
             address: "Rua Elisas Barbosa, S/N",
@@ -77,7 +81,9 @@ const List: React.FC = () => {
                         {
                             icon: () => <FiEdit />,
                             tooltip: "Editar",
-                            onClick: (event, rowData) => {},
+                            onClick: (event, rowData: any) => {
+                                history.push(`/os/list/${rowData.id}`);
+                            },
                         },
                         {
                             icon: () => <AiOutlineDelete />,
