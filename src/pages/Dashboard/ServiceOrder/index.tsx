@@ -40,6 +40,14 @@ const ServiceOrder = () => {
                                     <div className="card-column">
                                         <Select
                                             options={options}
+                                            placeholder="Selecione um Técnico"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="card-row">
+                                    <div className="card-column">
+                                        <Select
+                                            options={options}
                                             placeholder="Selecione um Cliente"
                                         />
                                     </div>

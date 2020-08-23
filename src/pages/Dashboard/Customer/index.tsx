@@ -20,6 +20,7 @@ const Customer = () => {
                         document: "",
                         birth_date: "",
                         email: "",
+                        password: "",
                         phone: "",
                         address: "",
                         addres_number: "",
@@ -60,8 +61,6 @@ const Customer = () => {
                                             id="document"
                                         />
                                     </div>
-                                </div>
-                                <div className="card-row">
                                     <div className="card-column">
                                         <Input
                                             type="text"
@@ -74,6 +73,8 @@ const Customer = () => {
                                             id="birth_date"
                                         />
                                     </div>
+                                </div>
+                                <div className="card-row">
                                     <div className="card-column">
                                         <Input
                                             type="text"
@@ -82,6 +83,16 @@ const Customer = () => {
                                             value={values.email}
                                             onChange={handleChange}
                                             id="email"
+                                        />
+                                    </div>
+                                    <div className="card-column">
+                                        <Input
+                                            type="text"
+                                            label="Senha"
+                                            name="password"
+                                            value={values.password}
+                                            onChange={handleChange}
+                                            id="password"
                                         />
                                     </div>
                                     <div className="card-column">

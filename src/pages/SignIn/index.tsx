@@ -1,11 +1,17 @@
 import React, { useState, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
+import { useAuth } from "../../hooks/Auth";
+import { useToast } from "../../hooks/Toast";
+
 import logo from "../../assets/shield.png";
 
 import { Container, Content } from "./styles";
 
 const SignIn: React.FC = () => {
+    const { signIn } = useAuth();
+    const { addToast } = useToast();
+    const history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isVisibleMail, setIsVisibleMail] = useState(false);
@@ -13,33 +19,45 @@ const SignIn: React.FC = () => {
     const [isEffectMail, setIsEffectMail] = useState(true);
     const [isEffectPassword, setIsEffectPassword] = useState(true);
     const [buttonLoading, setButtonLoading] = useState(false);
-    const history = useHistory();
 
     const handleChangeMail = useCallback((e: any) => {
-        setEmail(e.value);
-        e.value === "" ? setIsVisibleMail(false) : setIsVisibleMail(true);
-        e.value !== "" || e.value !== null
+        setEmail(e.target.value);
+        e.target.value === ""
+            ? setIsVisibleMail(false)
+            : setIsVisibleMail(true);
+        e.target.value !== "" || e.target.value !== null
             ? setIsEffectMail(false)
             : setIsEffectMail(true);
     }, []);
 
     const handleChangePassword = (e: any) => {
-        setPassword(e.value);
-        e.value === ""
+        setPassword(e.target.value);
+        e.target.value === ""
             ? setIsVisiblePassword(false)
             : setIsVisiblePassword(true);
-        e.value !== "" || e.value !== null
+        e.target.value !== "" || e.target.value !== null
             ? setIsEffectPassword(false)
             : setIsEffectPassword(true);
     };
 
-    const handleSubmit = useCallback((e) => {
-        e.preventDefault();
-        setButtonLoading(true);
-        setTimeout(() => {
-            history.push("/dashboard");
-        }, 3000);
-    }, []);
+    const handleSubmit = useCallback(
+        async (e) => {
+            e.preventDefault();
+            setButtonLoading(true);
+            try {
+                await signIn({ email, password });
+            } catch (err) {
+                addToast({
+                    type: "error",
+                    title: "Erro na autenticação",
+                    description:
+                        "Ocorreu um erro ao fazer login, cheque as credenciais",
+                });
+                setButtonLoading(false);
+            }
+        },
+        [signIn, addToast, email, password],
+    );
 
     return (
         <Container>
