@@ -13,6 +13,16 @@ export const Content = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+
+    table {
+        margin-top: 14px;
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+    }
+
     > h1 {
         justify-content: flex-start;
         color: var(--light);

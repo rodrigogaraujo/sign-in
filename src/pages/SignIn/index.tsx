@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import { useHistory } from "react-router-dom";
 
 import { useAuth } from "../../hooks/Auth";
 import { useToast } from "../../hooks/Toast";
@@ -11,7 +10,6 @@ import { Container, Content } from "./styles";
 const SignIn: React.FC = () => {
     const { signIn } = useAuth();
     const { addToast } = useToast();
-    const history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isVisibleMail, setIsVisibleMail] = useState(false);
