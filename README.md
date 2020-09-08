@@ -1,5 +1,5 @@
 # sign-in
-A simple login page
+A simple system to manage service orders
 
 # Install
 - Visual Studio
@@ -12,6 +12,10 @@ A simple login page
 - React
 - Styled components
 - Polished
+- Axios
+- Hooks
+- TypeScript
+- Unform
 
 # Preview
 <img src="https://github.com/rodrigogaraujo/sign-in/blob/master/previewsign.gif" width="650"/>
