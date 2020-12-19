@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import ReactLoading from "react-loading";
 import { Formik, Form } from "formik";
 import Select from "react-select";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Toggle from "react-toggle";
 
 import api from "../../../../../services/api";

@@ -56,9 +56,9 @@ const List: React.FC = () => {
                 },
             });
             setUsers(response.data);
-            setLoading(false);
         }
         getUsers();
+        setLoading(false);
     }, [api]);
 
     return (

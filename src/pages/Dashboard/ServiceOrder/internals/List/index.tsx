@@ -25,9 +25,9 @@ const columns = [
         title: "Prioridade",
         width: 40,
         render: (rowData: any) => {
-            if (rowData.client.priority === "slow") {
+            if (rowData.priority === "slow") {
                 return "Baixa";
-            } else if (rowData.client.priority === "regular") {
+            } else if (rowData.priority === "regular") {
                 return "Normal";
             } else {
                 return "Alta";
