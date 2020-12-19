@@ -8,7 +8,7 @@ import AppProvider from "./hooks/index";
 function App() {
     return (
         <Router>
-            <AppProvider>
+            <AppProvider> 
                 <Routes />
             </AppProvider>
             <Global />

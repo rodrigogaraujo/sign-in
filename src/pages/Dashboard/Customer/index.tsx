@@ -44,7 +44,6 @@ const Customer = () => {
                     history.push("/customer/list");
                 }
             } catch (err) {
-                console.log(err);
                 addToast({
                     type: "error",
                     title: "Erro no cadastro",
