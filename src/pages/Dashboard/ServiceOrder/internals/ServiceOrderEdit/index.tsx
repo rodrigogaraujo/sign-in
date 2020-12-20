@@ -1,3 +1,14 @@
+/* eslint-disable camelcase */
+/* eslint-disable array-callback-return */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable react/jsx-closing-tag-location */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-indent-props */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable prefer-const */
 import React, { useState, useEffect, useCallback } from "react";
 
 import ReactLoading from "react-loading";
@@ -5,7 +16,7 @@ import { Formik, Form } from "formik";
 import Select from "react-select";
 import { useLocation } from "react-router-dom";
 import Toggle from "react-toggle";
- 
+
 import api from "../../../../../services/api";
 import { useAuth } from "../../../../../hooks/Auth";
 import { useToast } from "../../../../../hooks/Toast";
@@ -68,14 +79,15 @@ const Customer: React.FC = () => {
     const [selectEmployee, setSelectEmployee] = useState<SelectProps>();
     const [selectClient, setSelectClient] = useState<SelectProps>();
     const [selectProduct, setSelectProduct] = useState<SelectProps>();
-    const [selectUnityProduct, setSelectUnityProduct] = useState<
-        SelectStringProps
-    >();
+    const [
+        selectUnityProduct,
+        setSelectUnityProduct,
+    ] = useState<SelectStringProps>();
     const [selectPriority, setSelectPriority] = useState<SelectStringProps>();
     const [selectStatus, setSelectStatus] = useState<SelectStringProps>();
-    const [clients, setClients] = useState<Array<Object>>([]);
-    const [employes, setEmployes] = useState<Array<Object>>([]);
-    const [products, setProducts] = useState<Array<Object>>([]);
+    const [clients, setClients] = useState<any[]>([]);
+    const [employes, setEmployes] = useState<any[]>([]);
+    const [products, setProducts] = useState<any[]>([]);
     const [obs, setObs] = useState("");
     const [obsSolution, setObsSolution] = useState("");
     const [demand, setDemand] = useState(false);
@@ -119,7 +131,7 @@ const Customer: React.FC = () => {
 
     const handleSelectProduct = useCallback((options: any) => {
         if (options) setSelectProduct(options);
-    }, []); 
+    }, []);
 
     const handleSelectUnityProduct = useCallback((options: any) => {
         if (options) setSelectUnityProduct(options);
@@ -176,7 +188,7 @@ const Customer: React.FC = () => {
                     });
                     setLoading(false);
                 }
-            } 
+            }
             setLoading(false);
         },
         [
@@ -187,9 +199,23 @@ const Customer: React.FC = () => {
             service,
             obs,
             addToast,
-            token 
+            token,
         ],
     );
+
+    const getServiceProduct = useCallback(async () => {
+        setLoading(true);
+        if (getId) {
+            const response = await api.get(`/product_service/${getId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setServiceProduct(response.data);
+        }
+
+        setLoading(false);
+    }, [getId, token]);
 
     const handleSubmitEnd = useCallback(
         async (data: any) => {
@@ -281,13 +307,13 @@ const Customer: React.FC = () => {
             setLoading(false);
         },
         [
-            selectProduct, 
-            selectUnityProduct, 
-            demand, 
-            addToast, 
+            selectProduct,
+            selectUnityProduct,
+            demand,
+            addToast,
             getServiceProduct,
             service,
-            token
+            token,
         ],
     );
 
@@ -309,9 +335,9 @@ const Customer: React.FC = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            let emp: Array<Object> = [];
-            let cli: Array<Object> = [];
-            let pro: Array<Object> = [];
+            let emp: any[] = [];
+            let cli: any[] = [];
+            let pro: any[] = [];
             if (response.data && response.data.length) {
                 response.data.map((resp: any) => {
                     const data = { value: resp.id, label: resp.name };
@@ -349,30 +375,15 @@ const Customer: React.FC = () => {
                     }
                 });
             }
-            setProducts(pro);  
+            setProducts(pro);
 
             setLoading(false);
         }
         getService();
-    }, [api]);
-
-    async function getServiceProduct() {
-        setLoading(true);
-        if (getId) {
-            const response = await api.get(`/product_service/${getId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setServiceProduct(response.data);
-        }
-
-        setLoading(false);
-    }
-
+    }, [getId, token]);
     useEffect(() => {
         getServiceProduct();
-    }, []);
+    }, [getServiceProduct]);
 
     useEffect(() => {
         if (service && service.client && service.employee) {
@@ -395,7 +406,7 @@ const Customer: React.FC = () => {
             setSelectStatus(status);
             setObs(service.observation);
         }
-    }, [service]);
+    }, [service, optionsPriority, optionsSoStatus]);
 
     return (
         <Container>
@@ -410,7 +421,7 @@ const Customer: React.FC = () => {
                         justifyContent: "center",
                     }}
                 >
-                    <ReactLoading color="green" height={"20%"} width={"20%"} />
+                    <ReactLoading color="green" height="20%" width="20%" />
                 </div>
             ) : (
                 <div
@@ -421,9 +432,12 @@ const Customer: React.FC = () => {
                     }}
                 >
                     <Content>
-                        <h1>Ordem de Serviço número: {getId} </h1>
+                        <h1>
+                            Ordem de Serviço número:
+                            {getId}
+                        </h1>
                         <Formik
-                            enableReinitialize={!!!getId}
+                            enableReinitialize={!getId}
                             initialValues={{
                                 description:
                                     getId && service ? service.description : "",
@@ -470,7 +484,7 @@ const Customer: React.FC = () => {
                                                         type="text"
                                                         label="Descrição da problema"
                                                         name="description"
-                                                        req={true}
+                                                        req
                                                         value={
                                                             values.description
                                                         }
@@ -575,7 +589,7 @@ const Customer: React.FC = () => {
                                                             type="text"
                                                             label="Quantidade"
                                                             name="quantity"
-                                                            req={true}
+                                                            req
                                                             value={
                                                                 values.quantity
                                                             }
@@ -637,11 +651,11 @@ const Customer: React.FC = () => {
                                                         {serviceProduct !==
                                                             null &&
                                                             serviceProduct.map(
-                                                                (service) => (
+                                                                (serv) => (
                                                                     <tr>
                                                                         <td>
                                                                             {
-                                                                                service
+                                                                                serv
                                                                                     .product
                                                                                     .description
                                                                             }
@@ -653,18 +667,18 @@ const Customer: React.FC = () => {
                                                                             }}
                                                                         >
                                                                             {
-                                                                                service.quantity
+                                                                                serv.quantity
                                                                             }
                                                                         </td>
                                                                         <td>
-                                                                            {`R$ ${service.product.price_sell}`}
+                                                                            {`R$ ${serv.product.price_sell}`}
                                                                         </td>
                                                                         <td>
-                                                                            {service.demand ===
+                                                                            {serv.demand ===
                                                                             1
                                                                                 ? `R$ ${
-                                                                                      service.quantity *
-                                                                                      service
+                                                                                      serv.quantity *
+                                                                                      serv
                                                                                           .product
                                                                                           .price_sell
                                                                                   }`
@@ -698,7 +712,7 @@ const Customer: React.FC = () => {
                     </Content>
                     <Content style={{ padding: "10px 60px" }}>
                         <Formik
-                            enableReinitialize={!!!getId}
+                            enableReinitialize={!!getId}
                             initialValues={{
                                 description_solution: service
                                     ? service.description_solution
@@ -720,7 +734,7 @@ const Customer: React.FC = () => {
                                                         type="text"
                                                         label="Descrição da solução"
                                                         name="description_solution"
-                                                        req={true}
+                                                        req
                                                         value={
                                                             values.description_solution
                                                         }
