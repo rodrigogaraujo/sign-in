@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { FiFacebook, FiTwitter, FiInstagram } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 import { Container } from "./styles";
 import Content from "../../../Content";
@@ -16,13 +17,13 @@ const TopBar: React.FC = () => {
           </div>
           <div className="header_login_register_social">
             <span>
-              <a href="#" title="Login">
+              <Link to="/sign-in" title="Login">
                 Login
-              </a>
+              </Link>
               <p>ou</p>
-              <a href="#" title="Cadastre-se">
+              <Link to="!#" title="Cadastre-se">
                 Cadastrar-se
-              </a>
+              </Link>
             </span>
             <p className="white">|</p>
             <a href="#" className="btn_social" title="Nosso facebook">
