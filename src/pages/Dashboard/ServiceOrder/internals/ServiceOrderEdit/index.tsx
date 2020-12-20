@@ -176,7 +176,7 @@ const Customer: React.FC = () => {
                     });
                     setLoading(false);
                 }
-            }
+            } 
             setLoading(false);
         },
         [
@@ -186,6 +186,8 @@ const Customer: React.FC = () => {
             selectStatus,
             service,
             obs,
+            addToast,
+            token 
         ],
     );
 
@@ -225,7 +227,7 @@ const Customer: React.FC = () => {
             }
             setLoading(false);
         },
-        [obsSolution, selectStatus],
+        [obsSolution, selectStatus, addToast, service, token],
     );
 
     const handleSubmitProductService = useCallback(
@@ -278,7 +280,15 @@ const Customer: React.FC = () => {
             }
             setLoading(false);
         },
-        [selectProduct, selectUnityProduct, demand],
+        [
+            selectProduct, 
+            selectUnityProduct, 
+            demand, 
+            addToast, 
+            getServiceProduct,
+            service,
+            token
+        ],
     );
 
     useEffect(() => {
