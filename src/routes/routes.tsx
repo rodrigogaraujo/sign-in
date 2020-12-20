@@ -18,16 +18,16 @@ const Routes: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/sign-in" exact component={SignIn} />
-      <Route path="/dashboard" exact isPrivate component={Dashboard} />
-      <Route path="/customer" exact isPrivate component={Customer} />
-      <Route path="/customer/list" isPrivate exact component={CustomerList} />
-      <Route path="/os" isPrivate exact component={ServiceOrder} />
-      <Route path="/os/list" isPrivate exact component={ServiceOrderList} />
-      <Route path="/os/list/:id" isPrivate exact component={ServiceOrderEdit} />
-      <Route path="/os/list-all" isPrivate exact component={ListAll} />
-      <Route path="/product" isPrivate exact component={Product} />
-      <Route path="/product/list" isPrivate exact component={ProductList} />
+      <Route path="/sign-in" component={SignIn} />
+      <Route path="/dashboard" isPrivate component={Dashboard} />
+      <Route path="/customer" isPrivate component={Customer} />
+      <Route path="/customer/list" isPrivate component={CustomerList} />
+      <Route path="/os" isPrivate component={ServiceOrder} />
+      <Route path="/os/list" isPrivate component={ServiceOrderList} />
+      <Route path="/os/list/:id" isPrivate component={ServiceOrderEdit} />
+      <Route path="/os/list-all" isPrivate component={ListAll} />
+      <Route path="/product" isPrivate component={Product} />
+      <Route path="/product/list" isPrivate component={ProductList} />
     </Switch>
   );
 };
