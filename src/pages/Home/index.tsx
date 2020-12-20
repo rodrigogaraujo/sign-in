@@ -4,12 +4,12 @@ import TopBar from "../../components/site/TopBar";
 
 import { Header } from "./styles";
 
-const Home = () => {
-    return (
-        <Header>
-            <TopBar />
-        </Header>
-    );
+const Home: React.FC = () => {
+  return (
+    <Header>
+      <TopBar />
+    </Header>
+  );
 };
 
 export default Home;

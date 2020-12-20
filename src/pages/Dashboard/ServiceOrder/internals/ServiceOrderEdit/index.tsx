@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable camelcase */
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -195,7 +197,6 @@ const Customer: React.FC = () => {
             selectEmployee,
             selectClient,
             selectPriority,
-            selectStatus,
             service,
             obs,
             addToast,

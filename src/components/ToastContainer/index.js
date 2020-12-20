@@ -12,7 +12,7 @@ const ToastContainer = ({ messages }) => {
       from: { right: "-120%" },
       enter: { right: "0%" },
       leave: { right: "-120%" },
-    }
+    },
   );
 
   return (
