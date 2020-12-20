@@ -372,7 +372,7 @@ const Customer: React.FC = () => {
 
     useEffect(() => {
         getServiceProduct();
-    }, [api]);
+    }, []);
 
     useEffect(() => {
         if (service && service.client && service.employee) {
