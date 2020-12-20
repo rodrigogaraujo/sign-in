@@ -5,7 +5,7 @@ import { Formik, Form } from "formik";
 import Select from "react-select";
 import { useLocation } from "react-router-dom";
 import Toggle from "react-toggle";
-
+ 
 import api from "../../../../../services/api";
 import { useAuth } from "../../../../../hooks/Auth";
 import { useToast } from "../../../../../hooks/Toast";
@@ -119,7 +119,7 @@ const Customer: React.FC = () => {
 
     const handleSelectProduct = useCallback((options: any) => {
         if (options) setSelectProduct(options);
-    }, []);
+    }, []); 
 
     const handleSelectUnityProduct = useCallback((options: any) => {
         if (options) setSelectUnityProduct(options);
@@ -349,7 +349,7 @@ const Customer: React.FC = () => {
                     }
                 });
             }
-            setProducts(pro);
+            setProducts(pro);  
 
             setLoading(false);
         }
