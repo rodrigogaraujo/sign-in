@@ -20,13 +20,13 @@ const Routes: React.FC = () => {
       <Route path="/" exact component={Home} />
       <Route path="/sign-in" component={SignIn} />
       <Route path="/dashboard" isPrivate component={Dashboard} />
-      <Route path="/customer" isPrivate component={Customer} />
+      <Route path="/customer" exact isPrivate component={Customer} />
       <Route path="/customer/list" isPrivate component={CustomerList} />
-      <Route path="/os" isPrivate component={ServiceOrder} />
+      <Route path="/os" exact isPrivate component={ServiceOrder} />
       <Route path="/os/list" isPrivate component={ServiceOrderList} />
       <Route path="/os/list/:id" isPrivate component={ServiceOrderEdit} />
       <Route path="/os/list-all" isPrivate component={ListAll} />
-      <Route path="/product" isPrivate component={Product} />
+      <Route path="/product" exact  isPrivate component={Product} />
       <Route path="/product/list" isPrivate component={ProductList} />
     </Switch>
   );
