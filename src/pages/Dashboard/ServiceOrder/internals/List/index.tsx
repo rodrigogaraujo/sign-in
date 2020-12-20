@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useEffect, useState } from "react";
 
@@ -93,7 +94,7 @@ const List: React.FC = () => {
       setLoading(false);
     }
     getServices();
-  }, [api]);
+  }, [token]);
 
   return (
     <Container>

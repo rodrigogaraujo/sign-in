@@ -85,7 +85,7 @@ const Customer: React.FC = () => {
         history.push("/product/list");
       }
     },
-    [unity, typeProduct, alert, active],
+    [unity, typeProduct, alert, active, history, token, addToast],
   );
   return (
     <Container>

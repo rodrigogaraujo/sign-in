@@ -144,7 +144,7 @@ const ServiceOrder: React.FC = () => {
       setLoading(false);
     }
     getUsers();
-  }, [api]);
+  }, [token]);
 
   return (
     <Container>

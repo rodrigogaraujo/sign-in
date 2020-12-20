@@ -53,7 +53,7 @@ const Customer: React.FC = () => {
         setLoading(false);
       }
     },
-    [api, addToast],
+    [history, token, addToast],
   );
 
   return (
